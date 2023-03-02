@@ -1,4 +1,4 @@
-# KNETKIT
+# KNetKit
 
 This image contains basic network tools for troubleshooting network issues. It is based on Alpine Linux and far from being complete.
 
