@@ -1,0 +1,17 @@
+FROM amazonlinux:2.0.20230221.0
+
+LABEL maintainer="Fabricio Leotti <fabricio.leotti@gmail.com>"
+
+USER root
+
+RUN yum update -y \
+  && yum install shadow-utils traceroute bind-utils tcpdump tar wget iputils openssl telnet nc -y \
+  && yum clean all
+
+RUN adduser -m -d /opt/knetkit --uid 1111 knetkituser
+
+USER knetkituser
+
+WORKDIR /opt/knetkit
+
+ENTRYPOINT ["/bin/sh","-c","while sleep 3600; do :; done"]

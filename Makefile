@@ -1,9 +1,10 @@
 IMAGE_NAME:=knetkit
 IMAGE_TAG:=$(shell cat VERSION)
-IMAGE:=$(DOCKERHUB_USER)/$(IMAGE_NAME):$(IMAGE_TAG)
+IMAGE_FLAVOR:=alpine
+IMAGE:=$(DOCKERHUB_USER)/$(IMAGE_NAME):$(IMAGE_TAG)-$(IMAGE_FLAVOR)
 
 build: check-env
-	docker build -t $(IMAGE) .
+	docker build -f Dockerfile-$(IMAGE_FLAVOR) -t $(IMAGE) .
 
 login: check-env
 	docker login -u $(DOCKERHUB_USER)
